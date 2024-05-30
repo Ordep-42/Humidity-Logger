@@ -71,7 +71,7 @@ void publishMqtt(float temp, float humidity) {
         safeMqttConnection();
     }
 
-    mqttClient.publish(AdafruitIoUser "/feeds/temperatura", String(temp).c_str());
-    mqttClient.publish(AdafruitIoUser "/feeds/umidade", String(humidity).c_str());
+    mqttClient.publish(AdafruitIoUser "/feeds/humidlog.temperatura", String(temp).c_str());
+    mqttClient.publish(AdafruitIoUser "/feeds/humidlog.umidade", String(humidity).c_str());
     Serial.println(F("Data published to Adafruit IO"));
 }
