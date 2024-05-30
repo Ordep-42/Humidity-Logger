@@ -59,7 +59,7 @@ int connectMqtt() {
     return 0;
 }
 
-void handeMqttConnection() {
+void handleMqttConnection() {
     if (!mqttClient.connected()) {
         safeMqttConnection();
     }
