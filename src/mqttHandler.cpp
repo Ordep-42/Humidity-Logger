@@ -65,3 +65,12 @@ void handeMqttConnection() {
     mqttClient.loop();
 }
 
+void publishMqtt(float temp, float humidity) {
+    if (!mqttClient.connected()) {
+        safeMqttConnection();
+    }
+
+    mqttClient.publish(AdafruitIoUser "/feeds/temperatura", String(temp).c_str());
+    mqttClient.publish(AdafruitIoUser "/feeds/umidade", String(humidity).c_str());
+    Serial.println(F("Data published to Adafruit IO"));
+}

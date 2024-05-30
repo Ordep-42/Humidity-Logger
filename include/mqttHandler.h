@@ -15,6 +15,6 @@ void setupMqtt();
 int connectMqtt();
 void safeMqttConnection();
 void handleMqttConnection();
-int publishMqtt(float temp, float humidity);
+void publishMqtt(float temp, float humidity);
 
 #endif
