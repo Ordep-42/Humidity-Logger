@@ -21,6 +21,7 @@ void setupWifi() {
         delay(wifiTimeout);
         digitalWrite(2, LOW);
         attempts++;
+
         if (attempts == 3) {
             Serial.println(F("Failed to connect to WiFi after 3 attempts. Restarting."));
             ESP.restart();
