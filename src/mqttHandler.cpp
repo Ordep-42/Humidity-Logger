@@ -56,6 +56,7 @@ int connectMqtt() {
         }
         delay(100);
     }
+    return 0;
 }
 
 void handeMqttConnection() {
