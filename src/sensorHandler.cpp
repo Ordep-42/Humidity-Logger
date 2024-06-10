@@ -17,3 +17,7 @@ float getHumidity() {
     aht.getEvent(&humidity, NULL);
     return humidity.relative_humidity;
 }
+
+float getDew(float temp, float hum) {
+    return (243.04 * alfa(temp, hum))/(17.625 - alfa(temp, hum));
+}
