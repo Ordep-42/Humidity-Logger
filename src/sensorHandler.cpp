@@ -18,6 +18,10 @@ float getHumidity() {
     return humidity.relative_humidity;
 }
 
+float alfa(float temp, float hum) {
+    return log(hum/100) + (17.625 * temp) / (243.04 + temp);
+}
+
 float getDew(float temp, float hum) {
     return (243.04 * alfa(temp, hum))/(17.625 - alfa(temp, hum));
 }

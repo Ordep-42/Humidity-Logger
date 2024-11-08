@@ -10,7 +10,7 @@ void setupWifi() {
 
     Serial.println(F("Starting WiFi"));
     WiFi.mode(WIFI_STA);
-    WiFi.setHostname("ESP32-HumidityLogger");
+    WiFi.setHostname(HOSTNAME);
     WiFi.begin(wifiSSID, wifiPass);
     
     while (!connectWifi() && attempts < 3) {

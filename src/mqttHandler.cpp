@@ -2,8 +2,6 @@
 
 PubSubClient mqttClient(wifiClient);
 
-const char* mqttServer = "io.adafruit.com";
-const int mqttPort = 1883;
 const unsigned int mqttTimeout = 10 * 1000;
 const char* clientID = "ESP32-HumidityLogger";
 
@@ -46,7 +44,7 @@ int connectMqtt() {
     while(!mqttClient.connected() && millis() - start < mqttTimeout) {
         Serial.print(F("Status: "));
         Serial.println(mqttClient.state());
-        if (mqttClient.connect(clientID, AdafruitIoUser, AdafruitIoKey)) {
+        if (mqttClient.connect(clientID, User, Key)) {
             Serial.println(F("Connected to MQTT"));
             return 1;
         } else {
@@ -75,8 +73,9 @@ void publishMqtt(float temp, float humidity) {
         digitalWrite(2, HIGH);
         return;
     }
-    mqttClient.publish(AdafruitIoUser "/feeds/humidlog.temperatura", String(temp).c_str());
-    mqttClient.publish(AdafruitIoUser "/feeds/humidlog.umidade", String(humidity).c_str());
-    Serial.println(F("Data published to Adafruit IO"));
+    mqttClient.publish(User "/jupiterbrain/temperature", String(temp).c_str());
+    mqttClient.publish(User "/jupiterbrain/humidity", String(humidity).c_str());
+    Serial.print(F("Data published to "));
+    Serial.println(F(mqttServer));
     digitalWrite(2, LOW);
 }
